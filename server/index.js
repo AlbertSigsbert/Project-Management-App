@@ -2,13 +2,17 @@ const express = require("express");
 require("dotenv").config();
 const { graphqlHTTP } = require("express-graphql");
 const schema = require('./schema/schema');
+const connectDB = require('./config/db');
 const port = process.env.PORT;
 
 //Init app
 const app = express();
 
+//Connect to DB
+connectDB();
+
 //Set graphql express endpoint & middleware
-app.use('graphql', graphqlHTTP({
+app.use('/graphql', graphqlHTTP({
    schema,
    graphiql:process.env.NODE_ENV === 'development'
 }));
