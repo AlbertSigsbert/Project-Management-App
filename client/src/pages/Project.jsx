@@ -1,9 +1,9 @@
+import ProjectDetails from "../components/ProjectDetails";
+
 
 function Project(props) {
     return (
-        <div>
-            Project Page
-        </div>
+        <ProjectDetails/>
     );
 }
 
