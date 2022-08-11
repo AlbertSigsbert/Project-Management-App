@@ -6,6 +6,8 @@ import { GET_PROJECT } from "../queries/projectQueries";
 //Components
 import Spinner from "./Spinner";
 import ClientInfo from "./ClientInfo";
+import DeleteProjectButton from "./DeleteProjectButton";
+import EditProjectModal from "./EditProjectModal";
 
 function ProjectDetails(props) {
   const { id } = useParams();
@@ -23,7 +25,7 @@ function ProjectDetails(props) {
           <Link to="/" className="btn btn-sm btn-secondary mb-2 px-4 ">
             Back
           </Link>
-         
+
           <div className="row align-items-md-stretch">
             <div className="col-md-6">
               <div className="h-100 p-5 text-bg-dark rounded-3">
@@ -36,6 +38,11 @@ function ProjectDetails(props) {
               </div>
             </div>
             <ClientInfo client={data.project.client} />
+          </div>
+
+          <div className="d-flex justify-content-between my-5">
+            <DeleteProjectButton projectId={data.project.id} />
+            <EditProjectModal project={data.project} />
           </div>
         </>
       )}
